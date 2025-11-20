@@ -1,7 +1,10 @@
 import Weatherboy
 import time
 
+#loop so function runs indefinitely untill stopped by user.
 while True:
+
+    # Menu:
     print("=====Weatherboy Terminal System====")
     print("1. Get Current Weather")
     print("2. Get Air Quality Index(AQI)")
@@ -14,6 +17,7 @@ while True:
     #input for above menu:
     inp=int(input("Enter choice:"))
 
+    #logic to check which choice was made:
     if inp==1:
         L=Weatherboy.Current_Weather()
         print(f"Current Weather:{L['weather']}")
