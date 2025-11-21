@@ -20,11 +20,13 @@ while True:
     #logic to check which choice was made:
     if inp==1:
         L=Weatherboy.Current_Weather()
+        print(L)
         print(f"Current Weather:{L['weather']}")
-        print(f"Actual Current Temprature:{L['temprature']['temp']}")
-        print(f"Feels like:{L['temprature']['feels_like']}")
+        print(f"Actual Current Temprature:{L['temprature']['temp']} C")
+        print(f"Feels like:{L['temprature']['feels_like']} C")
         print(f"Pressure:{L['temprature']['pressure']}")
-        print(f"Humidity:{L['temprature']['sea_level']}")
+        print(f"Humidity:{L['temprature']['humidity']}")
+        print(f"")
     elif inp==2:
         print(Weatherboy.AQI())
     elif inp==3:
