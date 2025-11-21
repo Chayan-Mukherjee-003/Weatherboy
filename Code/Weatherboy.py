@@ -13,10 +13,16 @@ def Current_Weather():
     wind=data['wind']
     return {'weather':weather,'temprature':temp_v,'visibility':visibility,'wind':wind}
 def AQI():
-    client=OpenAQ(api_key='3df5c2816c9ddee6d567bdfc5ccd5cf2e1bb1973b2d7bcaf60ea3af59b632189')
-    location=client.locations.list()
-    client.close()
-    print(location)
+    City=input("Enter City:")
+    key='70f99925cc89d99f50c781fc0765ea06'
+    url=f"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=5&appid={key}"
+    response=requests.get(url)
+    data=response.json()
+    lat,lon=data[0]["lat"],data[0]["lon"]
+    url2=f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}"
+    response2=requests.get(url2)
+    data2=response2.json()
+    print(data2)
 
 def Weather_AQI_Combined():
     return "Combined"
