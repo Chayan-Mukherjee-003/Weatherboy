@@ -22,7 +22,18 @@ def AQI():
     url2=f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}"
     response2=requests.get(url2)
     data2=response2.json()
-    print(data2)
+    co=data2['list'][0]['components']['co']
+    no=data2['list'][0]['components']['no']
+    no2=data2['list'][0]['components']['no2']
+    o3=data2['list'][0]['components']['o3']
+    so2=data2['list'][0]['components']['so2']
+    pm2_5=data2['list'][0]['components']['pm2_5']
+    pm10=data2['list'][0]['components']['pm10']
+    nh3=data2['list'][0]['components']['nh3']
+    Lis=[co,no,no2,o3,so2,pm2_5,pm10,nh3]
+    max_lis=max(Lis)
+    
+
 
 def Weather_AQI_Combined():
     return "Combined"
