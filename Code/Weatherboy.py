@@ -22,17 +22,23 @@ def AQI():
     url2=f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}"
     response2=requests.get(url2)
     data2=response2.json()
-    co=data2['list'][0]['components']['co']
-    no=data2['list'][0]['components']['no']
-    no2=data2['list'][0]['components']['no2']
-    o3=data2['list'][0]['components']['o3']
+
     so2=data2['list'][0]['components']['so2']
-    pm2_5=data2['list'][0]['components']['pm2_5']
+    no2=data2['list'][0]['components']['no2']
     pm10=data2['list'][0]['components']['pm10']
-    nh3=data2['list'][0]['components']['nh3']
-    Lis=[co,no,no2,o3,so2,pm2_5,pm10,nh3]
-    max_lis=max(Lis)
+    pm2_5=data2['list'][0]['components']['pm2_5']
+    o3=data2['list'][0]['components']['o3']
+    co=data2['list'][0]['components']['co']
     
+    
+    classes=[[(0,20),(20,80),(80,250),(250,350)],
+             [(0,40),(40,70),(70,150),(150,200)],
+             [(0,20),(20,50),(50,100),(100,200)],
+             [(0,10),(10,25),(25,50),(50,75)],
+             [(0,60),(60,100),(100,140),(140,180)],
+             [(0,4400),(4400,9400),(9400,12400),(12400,15400)]]    
+    
+    if 
 
 
 def Weather_AQI_Combined():
