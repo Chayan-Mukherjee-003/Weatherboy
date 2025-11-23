@@ -10,7 +10,7 @@ while True:
     print("2. Get Air Quality Index(AQI)")
     print("3. Weather + AQI Combined Report")
     print("4. View Search History")
-    print("5. Analytics and Insight")
+    print("5. Forecast for 5 days")
     print("6. Exit")
     print("===================================")
     
@@ -37,7 +37,7 @@ while True:
     elif inp==4:
         print(Weatherboy.History())
     elif inp==5:
-        print(Weatherboy.Analytics())
+        print(Weatherboy.Forecast(''))
     elif inp==6:
         print("Thank you for using Weatherboy!")
         time.sleep(1.5)
@@ -45,3 +45,4 @@ while True:
     else:
         print("wrong input, please give input ranging 1 to 6")
     print()
+    time.sleep(2)

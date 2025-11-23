@@ -110,7 +110,6 @@ def AQI(City):
         co_v=5
     
     vL=[so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v]
-    print(vL) #remove this later
     AQI=''
     check=max(vL)
     if check==1:
@@ -143,8 +142,15 @@ def Weather_AQI_Combined(City):
 
     return Return
 
-def History():
+def History(): #implement using CSV or not at all, seems rudementary to implement. Check later
     return "History"
 
-def Analytics():
-    return "Analytics and Insight"
+def Forecast(city):
+    #maybe i should add this block of code(150 to 155) in a seperate function like 'API_Call()' or something, ive called it thrice already
+    if city=='':
+        city = input("Enter City:")
+    key='70f99925cc89d99f50c781fc0765ea06'
+    url="https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}"
+    response=requests.get(url)
+    data=response.json()
+    return data #this isnt working. check in the morning. as of 23/11/2025, 21:01, Error message: "{'cod': 401, 'message': 'Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.'}"
