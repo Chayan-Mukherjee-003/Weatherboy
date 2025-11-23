@@ -12,6 +12,7 @@ def Current_Weather():
     visibility=data['visibility']
     wind=data['wind']
     return {'weather':weather,'temprature':temp_v,'visibility':visibility,'wind':wind}
+
 def AQI():
     City=input("Enter City:")
     key='70f99925cc89d99f50c781fc0765ea06'
@@ -29,7 +30,7 @@ def AQI():
     pm2_5=data2['list'][0]['components']['pm2_5']
     o3=data2['list'][0]['components']['o3']
     co=data2['list'][0]['components']['co']
-    
+    so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v=0,0,0,0,0,0
     
     classes=[[(0,20),(20,80),(80,250),(250,350)],
              [(0,40),(40,70),(70,150),(150,200)],
@@ -38,8 +39,90 @@ def AQI():
              [(0,60),(60,100),(100,140),(140,180)],
              [(0,4400),(4400,9400),(9400,12400),(12400,15400)]]    
     
-    if 
+    #value check for so2
+    if classes[0][0][0]<=so2<classes[0][0][1]:
+        so2_v=1
+    elif classes[0][1][0]<=so2<classes[0][1][1]:
+        so2_v=2
+    elif classes[0][2][0]<=so2<classes[0][2][1]:
+        so2_v=3
+    elif classes[0][3][0]<=so2<classes[0][3][1]:
+        so2_v=4
+    elif so2>=classes[0][3][1]:
+        so2_v=5
 
+    #same logic as so2 value check with modified list index to check for the other variables
+    if classes[1][0][0]<=no2<classes[1][0][1]:
+        no2_v=1
+    elif classes[1][1][0]<=no2<classes[1][1][1]:
+        no2_v=2
+    elif classes[1][2][0]<=no2<classes[1][2][1]:
+        no2_v=3
+    elif classes[1][3][0]<=no2<classes[1][3][1]:
+        no2_v=4
+    elif no2>=classes[1][3][1]:
+        no2_v=5
+    
+    if classes[2][0][0]<=pm10<classes[2][0][1]:
+        pm10_v=1
+    elif classes[2][1][0]<=pm10<classes[2][1][1]:
+        pm10_v=2
+    elif classes[2][2][0]<=pm10<classes[2][2][1]:
+        pm10_v=3
+    elif classes[2][3][0]<=pm10<classes[2][3][1]:
+        pm10_v=4
+    elif pm10>=classes[2][3][1]:
+        pm10_v=5
+
+    if classes[3][0][0]<=pm2_5<classes[3][0][1]:
+        pm2_5_v=1
+    elif classes[3][1][0]<=pm2_5<classes[3][1][1]:
+        pm2_5_v=2
+    elif classes[3][2][0]<=pm2_5<classes[3][2][1]:
+        pm2_5_v=3
+    elif classes[3][3][0]<=pm2_5<classes[3][3][1]:
+        pm2_5_v=4
+    elif pm2_5>=classes[3][3][1]:
+        pm2_5_v=5
+
+    if classes[4][0][0]<=o3<classes[4][0][1]:
+        o3_v=1
+    elif classes[4][1][0]<=o3<classes[4][1][1]:
+        o3_v=2
+    elif classes[4][2][0]<=o3<classes[4][2][1]:
+        o3_v=3
+    elif classes[4][3][0]<=o3<classes[4][3][1]:
+        o3_v=4
+    elif o3>=classes[4][3][1]:
+        o3_v=5
+
+    if classes[5][0][0]<=co<classes[5][0][1]:
+        co_v=1
+    elif classes[5][1][0]<=co<classes[5][1][1]:
+        co_v=2
+    elif classes[5][2][0]<=co<classes[5][2][1]:
+        co_v=3
+    elif classes[5][3][0]<=co<classes[5][3][1]:
+        co_v=4
+    elif co>=classes[5][3][1]:
+        co_v=5
+    
+    vL=[so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v]
+    print(vL) #remove this later
+    AQI=''
+    check=max(vL)
+    if check==1:
+        AQI='Good'
+    elif check==2:
+        AQI='Fair'
+    elif check==3:
+        AQI='Moderate'
+    elif check==4:
+        AQI='Poor'
+    elif check==5:
+        AQI='Very Poor'
+
+    return AQI
 
 def Weather_AQI_Combined():
     return "Combined"

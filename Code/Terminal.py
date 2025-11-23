@@ -27,7 +27,7 @@ while True:
         print(f"Humidity:{L['temprature']['humidity']}")
         print(f"Visibility:{L['visibility']}")
     elif inp==2:
-        print(Weatherboy.AQI())
+        print(f"Weather quality of the City is {Weatherboy.AQI()}")
     elif inp==3:
         print(Weatherboy.Weather_AQI_Combined())
     elif inp==4:
