@@ -1,9 +1,10 @@
 import requests
 from openaq import OpenAQ
 
-def Current_Weather():
+def Current_Weather(City):
+    if City=='':
+        City = input("Enter City:")
     key='70f99925cc89d99f50c781fc0765ea06'
-    City = input("Enter City:")
     url=f"https://api.openweathermap.org/data/2.5/weather?q={City}&appid={key}&units=metric"
     response=requests.get(url)
     data=response.json()
@@ -13,8 +14,9 @@ def Current_Weather():
     wind=data['wind']
     return {'weather':weather,'temprature':temp_v,'visibility':visibility,'wind':wind}
 
-def AQI():
-    City=input("Enter City:")
+def AQI(City):
+    if City=='':
+        City = input("Enter City:")
     key='70f99925cc89d99f50c781fc0765ea06'
     url=f"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=5&appid={key}"
     response=requests.get(url)
@@ -124,8 +126,20 @@ def AQI():
 
     return AQI
 
-def Weather_AQI_Combined():
-    return "Combined"
+def Weather_AQI_Combined(City):
+    #for current Weather:
+    L=Current_Weather(City)
+    Return=[]
+    Return.append(f"Current Weather:{L['weather']}")
+    Return.append(f"Actual Current Temprature:{L['temprature']['temp']} C")
+    Return.append(f"Feels like:{L['temprature']['feels_like']} C")
+    Return.append(f"Pressure:{L['temprature']['pressure']}")
+    Return.append(f"Humidity:{L['temprature']['humidity']}")
+    Return.append(f"Visibility:{L['visibility']}")
+
+    #for AQI:
+    Aq=f"Weather quality of the City is {AQI()}"
+    Return.append(Aq)
 
 def History():
     return "History"

@@ -17,6 +17,7 @@ while True:
     #input for above menu:
     inp=int(input("Enter choice:"))
 
+
     #logic to check which choice was made:
     if inp==1:
         L=Weatherboy.Current_Weather()
@@ -29,7 +30,10 @@ while True:
     elif inp==2:
         print(f"Weather quality of the City is {Weatherboy.AQI()}")
     elif inp==3:
-        print(Weatherboy.Weather_AQI_Combined())
+        city=input("Enter City Name:")
+        L=Weatherboy.Weather_AQI_Combined(city)
+        for i in L:
+            print(i)
     elif inp==4:
         print(Weatherboy.History())
     elif inp==5:
