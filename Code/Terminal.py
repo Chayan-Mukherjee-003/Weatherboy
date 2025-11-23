@@ -20,7 +20,7 @@ while True:
 
     #logic to check which choice was made:
     if inp==1:
-        L=Weatherboy.Current_Weather()
+        L=Weatherboy.Current_Weather('')
         print(f"Current Weather:{L['weather']}")
         print(f"Actual Current Temprature:{L['temprature']['temp']} C")
         print(f"Feels like:{L['temprature']['feels_like']} C")
@@ -28,7 +28,7 @@ while True:
         print(f"Humidity:{L['temprature']['humidity']}")
         print(f"Visibility:{L['visibility']}")
     elif inp==2:
-        print(f"Weather quality of the City is {Weatherboy.AQI()}")
+        print(f"Weather quality of the City is {Weatherboy.AQI('')}")
     elif inp==3:
         city=input("Enter City Name:")
         L=Weatherboy.Weather_AQI_Combined(city)

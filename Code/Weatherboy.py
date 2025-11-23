@@ -138,8 +138,10 @@ def Weather_AQI_Combined(City):
     Return.append(f"Visibility:{L['visibility']}")
 
     #for AQI:
-    Aq=f"Weather quality of the City is {AQI()}"
+    Aq=f"Weather quality of the City is {AQI(City)}"
     Return.append(Aq)
+
+    return Return
 
 def History():
     return "History"
