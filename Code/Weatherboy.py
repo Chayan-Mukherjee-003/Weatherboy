@@ -1,5 +1,4 @@
 import requests
-from openaq import OpenAQ
 
 def Current_Weather(City):
     if City=='':
@@ -42,6 +41,8 @@ def AQI(City):
              [(0,4400),(4400,9400),(9400,12400),(12400,15400)]]    
     
     #value check for so2
+
+    #idea for optimization: make a small function with the indexes as inputs. should clean up the clutter below. 
     if classes[0][0][0]<=so2<classes[0][0][1]:
         so2_v=1
     elif classes[0][1][0]<=so2<classes[0][1][1]:
@@ -150,7 +151,7 @@ def Forecast(city):
     if city=='':
         city = input("Enter City:")
     key='70f99925cc89d99f50c781fc0765ea06'
-    url="https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}"
+    url=f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}"
     response=requests.get(url)
     data=response.json()
-    return data #this isnt working. check in the morning. as of 23/11/2025, 21:01, Error message: "{'cod': 401, 'message': 'Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.'}"
+    return data #working now, forgot the 'f' instead of f string
