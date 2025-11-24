@@ -20,18 +20,21 @@ def API_Call_AQI(City):
     if City=='':
         City = input("Enter City:") 
     while True:
-        url=f"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=5&appid={key}" #following 4 lines convert city name to latitude and longitude
-        response=requests.get(url)
-        data=response.json()
-        lat,lon=data[0]["lat"],data[0]["lon"]
-        url2=f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}" #gets actual AQI results for given latitude and longitude
-        response2=requests.get(url2)
-        data2=response2.json()
-        if data['cod']=='404':
+        try:
+            url=f"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=5&appid={key}" #following 4 lines convert city name to latitude and longitude
+            response=requests.get(url)
+            data=response.json()
+            lat,lon=data[0]["lat"],data[0]["lon"]
+            url2=f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={key}" #gets actual AQI results for given latitude and longitude
+            response2=requests.get(url2)
+            data2=response2.json()
+            return data2
+        except IndexError:
             print("Invalid City name, please try different name")
             City=input("Enter City:")
-        else:
-            return data2
+        except:
+            print("Unknown error, please try again")
+            
     
 
 def API_Call_Forecast(city):
@@ -47,4 +50,3 @@ def API_Call_Forecast(city):
             city=input("Enter City:")
         else:
             return data
-
