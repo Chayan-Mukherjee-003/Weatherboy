@@ -40,75 +40,27 @@ def AQI(City):
              [(0,60),(60,100),(100,140),(140,180)],
              [(0,4400),(4400,9400),(9400,12400),(12400,15400)]]    
     
-    #value check for so2
-
-    #idea for optimization: make a small function with the indexes as inputs. should clean up the clutter below. 
-    if classes[0][0][0]<=so2<classes[0][0][1]:
-        so2_v=1
-    elif classes[0][1][0]<=so2<classes[0][1][1]:
-        so2_v=2
-    elif classes[0][2][0]<=so2<classes[0][2][1]:
-        so2_v=3
-    elif classes[0][3][0]<=so2<classes[0][3][1]:
-        so2_v=4
-    elif so2>=classes[0][3][1]:
-        so2_v=5
-
-    #same logic as so2 value check with modified list index to check for the other variables
-    if classes[1][0][0]<=no2<classes[1][0][1]:
-        no2_v=1
-    elif classes[1][1][0]<=no2<classes[1][1][1]:
-        no2_v=2
-    elif classes[1][2][0]<=no2<classes[1][2][1]:
-        no2_v=3
-    elif classes[1][3][0]<=no2<classes[1][3][1]:
-        no2_v=4
-    elif no2>=classes[1][3][1]:
-        no2_v=5
+    #value check function
+    def val_check(i,var):
+        if classes[i][0][0]<=var<classes[i][0][1]:
+            var_v=1
+        elif classes[i][1][0]<=var<classes[i][1][1]:
+            var_v=2
+        elif classes[i][2][0]<=var<classes[i][2][1]:
+            var_v=3
+        elif classes[i][3][0]<=var<classes[i][3][1]:
+            var_v=4
+        elif var>=classes[i][3][1]:
+            var_v=5
+        return var_v
     
-    if classes[2][0][0]<=pm10<classes[2][0][1]:
-        pm10_v=1
-    elif classes[2][1][0]<=pm10<classes[2][1][1]:
-        pm10_v=2
-    elif classes[2][2][0]<=pm10<classes[2][2][1]:
-        pm10_v=3
-    elif classes[2][3][0]<=pm10<classes[2][3][1]:
-        pm10_v=4
-    elif pm10>=classes[2][3][1]:
-        pm10_v=5
-
-    if classes[3][0][0]<=pm2_5<classes[3][0][1]:
-        pm2_5_v=1
-    elif classes[3][1][0]<=pm2_5<classes[3][1][1]:
-        pm2_5_v=2
-    elif classes[3][2][0]<=pm2_5<classes[3][2][1]:
-        pm2_5_v=3
-    elif classes[3][3][0]<=pm2_5<classes[3][3][1]:
-        pm2_5_v=4
-    elif pm2_5>=classes[3][3][1]:
-        pm2_5_v=5
-
-    if classes[4][0][0]<=o3<classes[4][0][1]:
-        o3_v=1
-    elif classes[4][1][0]<=o3<classes[4][1][1]:
-        o3_v=2
-    elif classes[4][2][0]<=o3<classes[4][2][1]:
-        o3_v=3
-    elif classes[4][3][0]<=o3<classes[4][3][1]:
-        o3_v=4
-    elif o3>=classes[4][3][1]:
-        o3_v=5
-
-    if classes[5][0][0]<=co<classes[5][0][1]:
-        co_v=1
-    elif classes[5][1][0]<=co<classes[5][1][1]:
-        co_v=2
-    elif classes[5][2][0]<=co<classes[5][2][1]:
-        co_v=3
-    elif classes[5][3][0]<=co<classes[5][3][1]:
-        co_v=4
-    elif co>=classes[5][3][1]:
-        co_v=5
+    
+    so2_v=val_check(0,so2)
+    no2_v=val_check(1,no2)
+    pm10_v=val_check(2,pm10)
+    pm2_5_v=val_check(3,pm2_5)
+    o3_v=val_check(4,o3)
+    co_v=val_check(5,co)
     
     vL=[so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v]
     AQI=''
