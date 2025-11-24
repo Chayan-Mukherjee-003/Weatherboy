@@ -6,7 +6,7 @@ A Python-based application to check weather and Air Quality
 
 - **Current Weather Details**: Calls an API and gets current Weather Details
 - **Air Quality**: Calls a similar API to get Air Quality and rates it on a scale (Good>Fair>Moderate>Poor>Very_Poor)
-- **3hr forecast**: Displays the temprature and other details for 3 times of the day(9 AM, 12 noon and 3 PM)
+- **3hr forecast**: Displays the temprature and other details for 3 times of the day(Multiples of 3, i.e., 15:00, 18:00, etc)
 
 ## Requirements
 

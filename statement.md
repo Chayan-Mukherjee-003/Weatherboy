@@ -24,7 +24,7 @@ The goal is not to replace already existing Apps but to build a small scale simp
    - Combines the Current Weather Details and Air Quality Results into one message for a single city
 
 4. **3-Hour Forecast**
-   - Displays Short term forecast entries for various times of the day (9 AM, 12 Noon and 3 PM)
+   - Displays Short term forecast entries for various times of the day (Multiples of 3, i.e., 15:00, 18:00, etc)
    - Includes temprature, humidity, pressure, visibilty and weather condition
 
 5. **Text Based User Interface**
