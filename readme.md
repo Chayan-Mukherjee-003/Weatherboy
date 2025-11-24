@@ -46,10 +46,11 @@ python Terminal.py
 ```
 password-checker/
 │
-├── Run.py                # Main application file with GUI
-├── AQI.py                # Air Quality related Code
-├── weather_services.py   # Current Weather Code
-├── utilities.py          # Combined function + 3 hr forecast
+├──Code
+│  ├── Run.py                # Main application file with GUI
+│  ├── AQI.py                # Air Quality related Code
+│  ├── weather_services.py   # Current Weather Code
+│  └── utilities.py          # Combined function + 3 hr forecast
 └── README.md             # Project documentation
 ```
 
