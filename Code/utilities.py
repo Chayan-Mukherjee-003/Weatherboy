@@ -6,6 +6,8 @@ def Weather_AQI_Combined(City):
     #for current Weather:
     L=Current_Weather(City)
     Return=[]
+
+    #appends the strings to a List to be iterated and printed later
     Return.append(f"Current Weather:{L['weather']}")
     Return.append(f"Actual Current Temprature:{L['temprature']['temp']} C")
     Return.append(f"Feels like:{L['temprature']['feels_like']} C")
@@ -24,6 +26,7 @@ def Forecast_3hr(city):
     data=API_Call_Forecast(city)
     List_raw=data['list']
     Return_data=[]
+    #return data spans for 5 days, the range(3) isolates the data for the current day and stores in list Return_data
     for i in range(3):
         list=List_raw[i]
         weather=list['weather'][0]['main']

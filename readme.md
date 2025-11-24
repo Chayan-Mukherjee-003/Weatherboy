@@ -12,6 +12,7 @@ A Python-based application to check weather and Air Quality
 
 - Python 3.x
 - requests library
+- time library
 
 ## Installation
 

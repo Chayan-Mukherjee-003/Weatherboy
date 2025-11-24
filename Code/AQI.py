@@ -2,7 +2,9 @@ from api_handler import *
 
 
 def AQI(City):
-    data2=API_Call_AQI(City)
+    data2=API_Call_AQI(City) #gets raw data from api_handler
+
+    #following 6 line isolate the unique pollutant data
     so2=data2['list'][0]['components']['so2']
     no2=data2['list'][0]['components']['no2']
     pm10=data2['list'][0]['components']['pm10']
@@ -11,6 +13,7 @@ def AQI(City):
     co=data2['list'][0]['components']['co']
     so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v=0,0,0,0,0,0
     
+    #predefined classes extracted from API website
     classes=[[(0,20),(20,80),(80,250),(250,350)],
              [(0,40),(40,70),(70,150),(150,200)],
              [(0,20),(20,50),(50,100),(100,200)],
@@ -18,7 +21,7 @@ def AQI(City):
              [(0,60),(60,100),(100,140),(140,180)],
              [(0,4400),(4400,9400),(9400,12400),(12400,15400)]]    
     
-    #value check function
+    #value check function defenition
     def val_check(i,var):
         if classes[i][0][0]<=var<classes[i][0][1]:
             var_v=1
@@ -32,7 +35,7 @@ def AQI(City):
             var_v=5
         return var_v
     
-
+    #setting values using value check function
     so2_v=val_check(0,so2)
     no2_v=val_check(1,no2)
     pm10_v=val_check(2,pm10)
@@ -41,8 +44,11 @@ def AQI(City):
     co_v=val_check(5,co)
     
     vL=[so2_v,no2_v,pm10_v,pm2_5_v,o3_v,co_v]
+
     AQI=''
     check=max(vL)
+
+    #checks the maximum values of the polutants and assigns AQI accordingly
     if check==1:
         AQI='Good'
     elif check==2:
