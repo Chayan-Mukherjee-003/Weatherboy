@@ -46,4 +46,4 @@ def API_Call_Forecast(city):
             city=input("Enter City:")
         else:
             return data
-    
+
