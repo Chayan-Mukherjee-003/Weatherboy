@@ -21,7 +21,7 @@ def Weather_AQI_Combined(City):
 
 
 def Forecast_3hr(city):
-    data=API_Call_Forecast()
+    data=API_Call_Forecast(city)
     List_raw=data['list']
     Return_data=[]
     for i in range(3):

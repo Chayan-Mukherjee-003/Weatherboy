@@ -1,7 +1,7 @@
 from api_handler import *
 
 def Current_Weather(City):
-    data=API_Call_Current_Weather()
+    data=API_Call_Current_Weather(City)
     weather=data['weather'][0]['main']
     temp_v=data['main']
     visibility=data['visibility']

@@ -2,7 +2,7 @@ from api_handler import *
 
 
 def AQI(City):
-    data2=API_Call_AQI()
+    data2=API_Call_AQI(City)
     so2=data2['list'][0]['components']['so2']
     no2=data2['list'][0]['components']['no2']
     pm10=data2['list'][0]['components']['pm10']
