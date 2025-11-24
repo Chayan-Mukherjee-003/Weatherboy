@@ -1,4 +1,6 @@
-import Weatherboy
+import weather_services
+import utilities
+import AQI
 import time
 
 #loop so function runs indefinitely untill stopped by user.
@@ -19,7 +21,7 @@ while True:
 
     #logic to check which choice was made:
     if inp==1:
-        L=Weatherboy.Current_Weather('')
+        L=weather_services.Current_Weather('')
         print(f"Current Weather:{L['weather']}")
         print(f"Actual Current Temprature:{L['temprature']['temp']} C")
         print(f"Feels like:{L['temprature']['feels_like']} C")
@@ -27,14 +29,14 @@ while True:
         print(f"Humidity:{L['temprature']['humidity']} %")
         print(f"Visibility:{L['visibility']} meters")
     elif inp==2:
-        print(f"Weather quality of the City is {Weatherboy.AQI('')}")
+        print(f"Weather quality of the City is {AQI.AQI('')}")
     elif inp==3:
         city=input("Enter City Name:")
-        L=Weatherboy.Weather_AQI_Combined(city)
+        L=utilities.Weather_AQI_Combined(city)
         for i in L:
             print(i)
     elif inp==4:
-        Result=Weatherboy.Forecast_3hr('')
+        Result=utilities.Forecast_3hr('')
         for i in Result:
             print("===================================")
             print(f"Time:{i['date']}")
