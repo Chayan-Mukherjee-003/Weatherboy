@@ -54,7 +54,7 @@ def AQI(City):
             var_v=5
         return var_v
     
-    
+
     so2_v=val_check(0,so2)
     no2_v=val_check(1,no2)
     pm10_v=val_check(2,pm10)
@@ -98,12 +98,22 @@ def Weather_AQI_Combined(City):
 def History(): #implement using CSV or not at all, seems rudementary to implement. Check later
     return "History"
 
-def Forecast(city):
+def Forecast_3hr(city):
     #maybe i should add this block of code(150 to 155) in a seperate function like 'API_Call()' or something, ive called it thrice already
     if city=='':
         city = input("Enter City:")
     key='70f99925cc89d99f50c781fc0765ea06'
-    url=f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}"
+    url=f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={key}&units=metric"
     response=requests.get(url)
     data=response.json()
-    return data #working now, forgot the 'f' instead of f string
+    List_raw=data['list']
+    Return_data=[]
+    for i in range(3):
+        list=List_raw[i]
+        weather=list['weather'][0]['main']
+        temp_v=list['main']
+        visibility=list['visibility']
+        wind=list['wind']
+        date=list['dt_txt']
+        Return_data.append({'date':date,'weather':weather,'temprature':temp_v,'visibility':visibility,'wind':wind})
+    return Return_data

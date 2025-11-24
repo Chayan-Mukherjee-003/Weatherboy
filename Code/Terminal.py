@@ -9,9 +9,8 @@ while True:
     print("1. Get Current Weather")
     print("2. Get Air Quality Index(AQI)")
     print("3. Weather + AQI Combined Report")
-    print("4. View Search History")
-    print("5. Forecast for 5 days")
-    print("6. Exit")
+    print("4. Forecast for 3 hrs")
+    print("5. Exit")
     print("===================================")
     
     #input for above menu:
@@ -24,9 +23,9 @@ while True:
         print(f"Current Weather:{L['weather']}")
         print(f"Actual Current Temprature:{L['temprature']['temp']} C")
         print(f"Feels like:{L['temprature']['feels_like']} C")
-        print(f"Pressure:{L['temprature']['pressure']}")
-        print(f"Humidity:{L['temprature']['humidity']}")
-        print(f"Visibility:{L['visibility']}")
+        print(f"Pressure:{L['temprature']['pressure']} hPa")
+        print(f"Humidity:{L['temprature']['humidity']} %")
+        print(f"Visibility:{L['visibility']} meters")
     elif inp==2:
         print(f"Weather quality of the City is {Weatherboy.AQI('')}")
     elif inp==3:
@@ -35,10 +34,18 @@ while True:
         for i in L:
             print(i)
     elif inp==4:
-        print(Weatherboy.History())
+        Result=Weatherboy.Forecast_3hr('')
+        for i in Result:
+            print("===================================")
+            print(f"Time:{i['date']}")
+            print(f"Current Weather:{i['weather']}")
+            print(f"Actual Current Temprature:{i['temprature']['temp']} C")
+            print(f"Feels like:{i['temprature']['feels_like']} C")
+            print(f"Pressure:{i['temprature']['pressure']} hPa")
+            print(f"Humidity:{i['temprature']['humidity']} %")
+            print(f"Visibility:{i['visibility']} meters")
+            print("===================================")
     elif inp==5:
-        print(Weatherboy.Forecast(''))
-    elif inp==6:
         print("Thank you for using Weatherboy!")
         time.sleep(1.5)
         break
