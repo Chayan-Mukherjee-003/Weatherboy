@@ -11,7 +11,7 @@ while True:
     print("1. Get Current Weather")
     print("2. Get Air Quality Index(AQI)")
     print("3. Weather + AQI Combined Report")
-    print("4. Forecast for 3 hrs")
+    print("4. Forecast for 3hrs")
     print("5. Exit")
     print("===================================")
     
